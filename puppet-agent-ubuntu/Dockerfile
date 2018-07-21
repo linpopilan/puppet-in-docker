@@ -28,7 +28,8 @@ RUN apt-get update && \
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
-ENTRYPOINT ["/opt/puppetlabs/bin/puppet"]
+ENTRYPOINT ["/usr/bin/puppet-wrapper.sh"]
 CMD ["agent", "--verbose", "--onetime", "--no-daemonize", "--summarize" ]
 
 COPY Dockerfile /
+COPY puppet-wrapper.sh /usr/bin
